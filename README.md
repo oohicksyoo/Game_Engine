@@ -37,6 +37,7 @@
 * You **only** need to add the imconfig-SFML.h, imgui-SFML.cpp, and imgui-SFML.h to the **Dear ImGUI** folder system
 * Open the **imconfig-SFML.h** and copy everything into the **imconfig.h** file (at the bottom of all the comments)
 * In you project add the files (imgui.cpp, imgui_demo.cpp, imgui_draw.cpp, imgui-SFML.cpp) to the sources folder
+* I found that since I made my project as a console project I had to include the header **#include "stdafx.h"** to each of the imported files from above
 * Open project properties and under **C/C++ -> General -> Additional Include Directories** add the **C:\Program Files\Dear ImGUI** Folder
 * Next go to **Linker -> Input -> Additional Dependencies** add **opengl32.lib** just above kernel32.lib
 * Hit **Apply**
