@@ -1,0 +1,11 @@
+﻿  stdafx.cpp
+  GameEngine.cpp
+GameEngine.cpp(2): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  imgui-SFML.cpp
+imgui-SFML.cpp(2): fatal error C1083: Cannot open include file: 'imgui-SFML.h': No such file or directory
+  imgui.cpp
+imgui.cpp(580): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  imgui_demo.cpp
+imgui_demo.cpp(25): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  imgui_draw.cpp
+imgui_draw.cpp(16): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
