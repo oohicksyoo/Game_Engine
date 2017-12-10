@@ -46,3 +46,7 @@
 
 **Resource Tutorial**
 https://eliasdaler.github.io/using-imgui-with-sfml-pt1/
+
+# Lua and Lua Bridge 
+**Resource Tutorial**
+https://eliasdaler.wordpress.com/2014/07/18/using-lua-with-cpp-luabridge/
