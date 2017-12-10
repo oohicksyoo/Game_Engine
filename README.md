@@ -1,13 +1,11 @@
 # Game_Engine
-
-
 # SFML Setup
 
 **SFML Download**
 * Download the latest version of SFML from: https://www.sfml-dev.org/download.php
 * Currently I am using version: 2.4.2
 * Grab the version: Visual C++ 14 (2015) - 32-bit
-* Create a folder in C:\Program Files and call it **SFML**
+* Create a folder in **C:\Program Files** and call it **SFML**
 * Open zip folder from download and copy the inner contents of the SFML version folder. Should have folder such as bin, examples, lib and include
 
 **Linking setup**
@@ -30,3 +28,20 @@
 
 **Extra Help If Needed**
 * http://gamecodeschool.com/sfml/building-your-first-sfml-game-project/
+
+# Dear ImGUI Setup
+* Download Dear ImGUI repo from github: https://github.com/ocornut/imgui
+* Create a folder in **C:\Program Files** and call it **Dear ImGUI**
+* Paste files from zip in this folder, should see things like examples, extra_fonts etc.
+* Download Dear ImGUI SFML Wrappers: https://github.com/eliasdaler/imgui-sfml
+* You **only** need to add the imconfig-SFML.h, imgui-SFML.cpp, and imgui-SFML.h to the **Dear ImGUI** folder system
+* Open the **imconfig-SFML.h** and copy everything into the **imconfig.h** file (at the bottom of all the comments)
+* In you project add the files (imgui.cpp, imgui_demo.cpp, imgui_draw.cpp, imgui-SFML.cpp) to the sources folder
+* Open project properties and under **C/C++ -> General -> Additional Include Directories** add the **C:\Program Files\Dear ImGUI** Folder
+* Next go to **Linker -> Input -> Additional Dependencies** add **opengl32.lib** just above kernel32.lib
+* Hit **Apply**
+* Hit **Ok**
+* Try a test run with the sample code from the link below
+
+**Resource Tutorial**
+https://eliasdaler.github.io/using-imgui-with-sfml-pt1/
