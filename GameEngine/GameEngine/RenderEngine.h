@@ -19,6 +19,7 @@ namespace Engine {
 			bool IsOpen();
 			void Update();
 			void Shutdown();
+			void CloseWindow();
 
 		private:
 			RenderEngine();

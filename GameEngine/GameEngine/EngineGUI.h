@@ -1,6 +1,7 @@
 #pragma once
 #include "Singleton.h"
 #include "Debug.h"
+#include "RenderEngine.h"
 
 //Dear Im GUI
 #include "imgui.h"
@@ -10,6 +11,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
+
+#include <vector>
 
 using namespace Utility;
 using namespace ImGui;
@@ -29,6 +32,20 @@ namespace Engine {
 
 		private:
 			EngineGUI();
+			void StatsWindow();
+			void MenuBar();
+
+			//Edit Menu Functions
+			void Undo();
+			void Redo();
+			void Cut();
+			void Copy();
+			void Paste();
+
+
+		private:
+			vector<float> fpsNodes;
+
 	};
 }
 

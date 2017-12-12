@@ -3,9 +3,11 @@
 
 Engine::RenderEngine::RenderEngine()
 {
-	window.create(VideoMode(640, 480, 32), "Cherry Engine");
+	window.create(VideoMode(1280, 720, 32), "Cherry Engine");
 	window.setVerticalSyncEnabled(true);
 	EngineGUI::getInstance().Initialize(window);
+
+	backgroundColour = Color(168, 17, 17, 255);
 }
 
 void Engine::RenderEngine::Shutdown() {
@@ -23,8 +25,8 @@ void Engine::RenderEngine::Update() {
 	while (window.pollEvent(event)) {
 		EngineGUI::getInstance().ProcessEvents(event);
 		if (event.type == Event::Closed) {
-			window.close();
-		}
+			CloseWindow();
+		}		
 	}
 
 	//Draw and update the IMGUI Stuff
@@ -37,4 +39,8 @@ void Engine::RenderEngine::Update() {
 	window.clear(backgroundColour);
 	EngineGUI::getInstance().Render(window);
 	window.display();
+}
+
+void Engine::RenderEngine::CloseWindow() {
+	window.close();
 }

@@ -1,6 +1,11 @@
-﻿  stdafx.cpp
+﻿  Component.cpp
+  Debug.cpp
+  EngineGUI.cpp
+d:\github-repos\game_engine\gameengine\gameengine\EngineGUI.h(7): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  Entity.cpp
+  EntityManager.cpp
   GameEngine.cpp
-GameEngine.cpp(2): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+d:\github-repos\game_engine\gameengine\gameengine\LuaManager.h(6): fatal error C1083: Cannot open include file: 'LuaBridge.h': No such file or directory
   imgui-SFML.cpp
 imgui-SFML.cpp(2): fatal error C1083: Cannot open include file: 'imgui-SFML.h': No such file or directory
   imgui.cpp
@@ -9,3 +14,7 @@ imgui.cpp(580): fatal error C1083: Cannot open include file: 'imgui.h': No such 
 imgui_demo.cpp(25): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
   imgui_draw.cpp
 imgui_draw.cpp(16): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
+  LuaManager.cpp
+d:\github-repos\game_engine\gameengine\gameengine\LuaManager.h(6): fatal error C1083: Cannot open include file: 'LuaBridge.h': No such file or directory
+  RenderEngine.cpp
+d:\github-repos\game_engine\gameengine\gameengine\EngineGUI.h(7): fatal error C1083: Cannot open include file: 'imgui.h': No such file or directory
