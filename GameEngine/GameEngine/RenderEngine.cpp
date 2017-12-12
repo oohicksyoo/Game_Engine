@@ -18,6 +18,8 @@ bool Engine::RenderEngine::IsOpen() {
 
 void Engine::RenderEngine::Update() {
 	Event event;
+
+	//Poll events
 	while (window.pollEvent(event)) {
 		EngineGUI::getInstance().ProcessEvents(event);
 		if (event.type == Event::Closed) {
@@ -25,9 +27,13 @@ void Engine::RenderEngine::Update() {
 		}
 	}
 
+	//Draw and update the IMGUI Stuff
 	EngineGUI::getInstance().Update(window, deltaClock.restart());
 	EngineGUI::getInstance().Draw();
 
+	//More rendering ie:Sprites
+
+	//End stuff
 	window.clear(backgroundColour);
 	EngineGUI::getInstance().Render(window);
 	window.display();

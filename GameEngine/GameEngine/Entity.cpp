@@ -2,11 +2,11 @@
 #include "Entity.h"
 
 
-Entity::Entity::Entity(int ID, string Name) {
+Entities::Entity::Entity(int ID, string Name) {
 
 }
 
 
-Entity::Entity::~Entity() {
+Entities::Entity::~Entity() {
 
 }

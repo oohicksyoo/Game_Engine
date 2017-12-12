@@ -12,7 +12,7 @@ local applicationSettings = {
             path = "Scripts/Entities/EntityItem.lua"
         },
         {
-            name = "sumNumbers",
+            name = "entityItem",
             path = "Scripts/script.lua"
         }     
     }

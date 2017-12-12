@@ -152,6 +152,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="LuaManager.h" />
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="Singleton.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="imgui-SFML.cpp" />
     <ClCompile Include="imgui.cpp" />

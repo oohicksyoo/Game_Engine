@@ -31,17 +31,17 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{653852d6-219c-4819-b445-07424362e6ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entity">
-      <UniqueIdentifier>{a4550086-c6d6-4351-bfd2-63a34926983b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Entity">
-      <UniqueIdentifier>{4cdce36c-6103-4022-967b-4c32bc4a8bdc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Engine">
       <UniqueIdentifier>{27afca2c-dd94-4406-b4a2-cac9526eb127}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Engine">
       <UniqueIdentifier>{c711afcc-7b4a-4796-908e-08186265ee01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{4cdce36c-6103-4022-967b-4c32bc4a8bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{a4550086-c6d6-4351-bfd2-63a34926983b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,13 +64,16 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files\Entity</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="EngineGUI.h">
       <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,13 +105,16 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Entity</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="RenderEngine.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="EngineGUI.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

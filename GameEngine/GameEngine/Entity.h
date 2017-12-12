@@ -7,16 +7,16 @@
 using namespace std;
 using namespace Components;
 
-namespace Entity {
+namespace Entities {
 	class Entity
 	{
-	public:
-		Entity(int ID, string Name);
-		~Entity();
+		public:
+			Entity(int ID, string Name);
+			~Entity();
 
-	private:
-		int id;
-		vector<Component> Components;
+		private:
+			int id;
+			vector<Component> Components;
 	};
 }
 

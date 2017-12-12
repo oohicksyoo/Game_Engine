@@ -9,3 +9,16 @@ sumNumbers = function(a, b)
     Debug.Spacer();
     return a + b
 end
+
+entityItem = {
+    information = {
+        name = "Entity Name"
+    },
+    components = {
+        GraphicsComponent = {
+            filename = "image.png",
+            z = 0,
+            animated = false            
+        }
+    }
+}
