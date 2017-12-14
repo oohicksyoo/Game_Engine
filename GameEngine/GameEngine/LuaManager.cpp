@@ -24,18 +24,19 @@ void Managers::LuaManager::init()
 		LuaRef entity = entitiesToLoad[i + 1];
 		string entityName = entity["name"].cast<string>();
 		string entityPath = entity["path"].cast<string>();
-		cout << "Loading Entity: " << entityName << " at (" << entityPath << ")" << endl;
+
+		Debug::getInstance().Log("Loading Entity: " + entityName + " at (" + entityPath + ")");
 
 		luaL_dofile(L, entityPath.c_str());
 
 		LuaRef entityFile = getGlobal(L, entityName.c_str());
 		if (entityFile.isNil()) {
-			cout << "Global Variable (" << entityName << ") was not found!" << endl;
+			Debug::getInstance().Log("Global Variable (" + entityName + ") was not found!");
 		} else {
-			cout << entityName << " was found" << endl;
+			Debug::getInstance().Log(entityName + " was found");
 		}
 	}
-	cout << "All entities loaded" << endl;
+	Debug::getInstance().Log("All entities loaded");
 
 	/*//Test the scripts function
 	LuaRef sumNumbers = getGlobal(L, "sumNumbers");

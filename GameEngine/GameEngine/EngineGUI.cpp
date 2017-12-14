@@ -8,6 +8,7 @@ Engine::EngineGUI::EngineGUI()
 void Engine::EngineGUI::Initialize(RenderWindow& window) {
 	SFML::Init(window);
 	StyleColorsDark(); //TODO: Reload last saved theme
+	GetStyle().FrameBorderSize = 1.0f;
 }
 
 void Engine::EngineGUI::Shutdown()
@@ -44,6 +45,8 @@ void Engine::EngineGUI::Draw()
 	//Draw some widgets here	
 	MenuBar();
 	StatsWindow();
+	EntityMenu();
+	LoggingWindow();
 
 	//ShowTestWindow();
 }
@@ -56,7 +59,6 @@ void Engine::EngineGUI::Render(RenderWindow & window)
 #pragma region Windows
 void Engine::EngineGUI::StatsWindow()
 {
-	const float DISTANCE = 10.0f;
 	float frameRate = GetIO().Framerate;
 	float cpuThread = 1000.0f / frameRate;
 
@@ -69,9 +71,10 @@ void Engine::EngineGUI::StatsWindow()
 	copy(fpsNodes.begin(), fpsNodes.end(), values);
 
 	//Position and setup window
-	ImVec2 windowPosition = ImVec2(GetIO().DisplaySize.x - DISTANCE, DISTANCE * 2);
+	ImVec2 windowPosition = ImVec2(GetIO().DisplaySize.x, 20);
 	ImVec2 windowPivot = ImVec2(1.0f, 0.0f);
 	SetNextWindowPos(windowPosition, ImGuiCond_Always, windowPivot);
+	SetNextWindowSize(ImVec2(200, 150));
 	PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f)); //Transparent background
 	Begin("Stats", (bool*)0, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
 	Text("FPS: %.1f", frameRate);
@@ -147,6 +150,21 @@ void Engine::EngineGUI::MenuBar()
 	}
 	
 }
+
+void Engine::EngineGUI::EntityMenu() {
+	ImVec2 windowPosition = ImVec2(0, 20); //Top left
+	ImVec2 windowPivot = ImVec2(0, 0);
+	SetNextWindowPos(windowPosition, ImGuiCond_Always, windowPivot);
+	SetNextWindowSize(ImVec2(200, GetIO().DisplaySize.y - 20));
+	//PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
+	Begin("Entity Menu", (bool*)0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
+	End();
+	//PopStyleColor();
+}
+
+void Engine::EngineGUI::LoggingWindow() {
+	Debug::getInstance().DrawConsoleWindow();
+}
 #pragma endregion
 
 #pragma region Menu Functions
@@ -175,5 +193,7 @@ void Engine::EngineGUI::Paste()
 	Debug::getInstance().Log("Paste");
 }
 #pragma endregion
+
+
 
 

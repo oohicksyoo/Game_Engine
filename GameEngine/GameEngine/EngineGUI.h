@@ -29,11 +29,14 @@ namespace Engine {
 			void Update(RenderWindow& window, Time deltaClock);
 			void Draw();
 			void Render(RenderWindow& window);
+			
 
 		private:
 			EngineGUI();
 			void StatsWindow();
 			void MenuBar();
+			void EntityMenu();	
+			void LoggingWindow();
 
 			//Edit Menu Functions
 			void Undo();
