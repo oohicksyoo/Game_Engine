@@ -2,6 +2,7 @@
 #include "Singleton.h"
 #include "Debug.h"
 #include "RenderEngine.h"
+#include "GameView.h"
 
 //Dear Im GUI
 #include "imgui.h"
@@ -17,6 +18,7 @@
 using namespace Utility;
 using namespace ImGui;
 using namespace sf;
+using namespace Engine;
 
 namespace Engine {
 	class EngineGUI : public Singleton<EngineGUI>
@@ -27,7 +29,7 @@ namespace Engine {
 			void Shutdown();
 			void ProcessEvents(Event e);
 			void Update(RenderWindow& window, Time deltaClock);
-			void Draw();
+			void Draw(Sprite sceneView);
 			void Render(RenderWindow& window);
 			
 
@@ -37,6 +39,7 @@ namespace Engine {
 			void MenuBar();
 			void EntityMenu();	
 			void LoggingWindow();
+			void SceneWindow(Sprite sceneView);
 
 			//Edit Menu Functions
 			void Undo();

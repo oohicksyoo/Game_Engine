@@ -13,11 +13,12 @@ namespace Managers {
 	{
 		friend class Singleton<EntityManager>;
 		public:
-			void AddEntity(Entity* entity);
+			void AddEntity(Entity* &entity);
 			bool RemoveEntityAt(int i);
 
 		private:
 			EntityManager();
+			~EntityManager();
 
 		private:
 			vector<Entity*> entities;

@@ -154,6 +154,8 @@
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="GameView.h" />
+    <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="LuaManager.h" />
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="Singleton.h" />
@@ -161,12 +163,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameView.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="imgui-SFML.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />

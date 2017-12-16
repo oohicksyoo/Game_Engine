@@ -1,7 +1,7 @@
 local applicationSettings = {
     title = "Game Engine",
-    width = 640,
-    height = 480,
+    width = 1280,
+    height = 720,
     scripts = {
         --"Scripts/script.lua",
         --"Scripts/secondScript.lua"
@@ -10,11 +10,7 @@ local applicationSettings = {
         {
             name = "entityItem",
             path = "Scripts/Entities/EntityItem.lua"
-        },
-        {
-            name = "entityItem",
-            path = "Scripts/script.lua"
-        }     
+        }    
     }
 }
 

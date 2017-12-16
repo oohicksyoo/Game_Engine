@@ -40,13 +40,14 @@ void Engine::EngineGUI::Update(RenderWindow & window, Time deltaClock)
 	SFML::Update(window, deltaClock);
 }
 
-void Engine::EngineGUI::Draw()
+void Engine::EngineGUI::Draw(Sprite sceneView)
 {
 	//Draw some widgets here	
 	MenuBar();
 	StatsWindow();
 	EntityMenu();
 	LoggingWindow();
+	SceneWindow(sceneView);
 
 	//ShowTestWindow();
 }
@@ -164,6 +165,17 @@ void Engine::EngineGUI::EntityMenu() {
 
 void Engine::EngineGUI::LoggingWindow() {
 	Debug::getInstance().DrawConsoleWindow();
+}
+
+void Engine::EngineGUI::SceneWindow(Sprite sceneView) {
+	ImVec2 windowPosition = ImVec2(250, 20); //Top left
+	ImVec2 windowPivot = ImVec2(0, 0);
+	SetNextWindowPos(windowPosition, ImGuiCond_Always, windowPivot);
+	SetNextWindowSize(ImVec2(765, 465));// 15 border on right and bottom
+	Begin("Scene View", (bool*)0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+	Text("Scene Name");
+	ImGui::Image(sceneView);
+	End();
 }
 #pragma endregion
 

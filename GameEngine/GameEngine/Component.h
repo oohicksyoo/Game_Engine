@@ -2,9 +2,8 @@
 namespace Components {
 	class Component
 	{
-	public:
-		Component();
-		~Component();
+		public:
+			virtual ~Component() {};
 	};
 }
 

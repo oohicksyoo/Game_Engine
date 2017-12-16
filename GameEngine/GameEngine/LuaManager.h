@@ -1,6 +1,8 @@
 #pragma once
 #include "Singleton.h"
 #include "Debug.h"
+#include "Entity.h"
+#include "EntityManager.h"
 
 //Lua Stuff
 #include <LuaBridge.h>
@@ -15,6 +17,8 @@ extern "C" {
 using namespace luabridge;
 using namespace std;
 using namespace Utility;
+using namespace Entities;
+using namespace Managers;
 
 namespace Managers {
 	class LuaManager : public Singleton<LuaManager>

@@ -4,9 +4,7 @@ entityItem = {
     },
     components = {
         GraphicsComponent = {
-            filename = "image.png",
-            z = 0,
-            animated = false            
+            filename = "Textures/RTS_Crate.png"            
         }
     }
 }

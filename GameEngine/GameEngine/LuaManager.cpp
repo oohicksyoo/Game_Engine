@@ -35,6 +35,17 @@ void Managers::LuaManager::init()
 		} else {
 			Debug::getInstance().Log(entityName + " was found");
 		}
+
+		LuaRef ei = entityFile["information"];
+		LuaRef ein = ei["name"];
+		if (!ein.isNil()) {
+			//Debug::getInstance().Log("Found name! (" + entityInformationName.cast<string>() + ")");
+			Debug::getInstance().Log("Found name!");
+		}
+
+		//Create an Entity Here
+		Entity* newEntity = new Entity(0, entityName);
+		EntityManager::getInstance().AddEntity(newEntity);
 	}
 	Debug::getInstance().Log("All entities loaded");
 
