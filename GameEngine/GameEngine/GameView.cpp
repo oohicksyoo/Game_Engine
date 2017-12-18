@@ -17,6 +17,16 @@ Engine::GameView::GameView() {
 	renderTexture.setActive();
 }
 
+Engine::GameView::~GameView()
+{
+	//TODO: Use after copy of entity to new pointer is done
+	/*(for (auto it = hierarchy.begin(); it != hierarchy.end(); it++) {
+
+		delete (*it);
+	}
+	hierarchy.clear();*/
+}
+
 void Engine::GameView::ProcessEvents(Event e) {
 	if (e.type == Event::MouseButtonPressed) {
 		/*if (e.mouseButton.button == Mouse::Left) {
@@ -31,17 +41,34 @@ void Engine::GameView::ProcessEvents(Event e) {
 
 Texture Engine::GameView::GetSceneView() {
 	//Cleanup
-	renderTexture.clear(Color::Red);
+	renderTexture.clear(Color::Black);
 	renderTexture.resetGLStates();
 
 	//Camera Work
 	renderTexture.setView(camera);
 
 	//Drawing
-	renderTexture.draw(sprite);
+	//renderTexture.draw(sprite);
+	for (int i = 0; i < hierarchy.size(); i++) {
+		Entity* e = hierarchy[i];
+		//GraphicsComponent* c = e->GetGraphics();
+		auto gc = e->GetComponent<GraphicsComponent>();
+		Sprite s = gc->GetSprite();
+		renderTexture.draw(s);
+	}
 
 	//Displaying
 	renderTexture.display();
 	return renderTexture.getTexture();
+}
+
+void Engine::GameView::AddEntityToScene(Entity * entity)
+{
+	hierarchy.push_back(entity);
+}
+
+vector<Entity*> Engine::GameView::GetHierarchy()
+{
+	return hierarchy;
 }
 

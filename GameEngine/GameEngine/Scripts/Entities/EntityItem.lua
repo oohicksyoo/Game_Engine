@@ -3,8 +3,16 @@ entityItem = {
         name = "Entity Name"
     },
     components = {
-        GraphicsComponent = {
-            filename = "Textures/RTS_Crate.png"            
+        componentList = {
+            "graphicsComponent",
+            "shaderComponent"
+        },
+        graphicsComponent = {
+            filename = "Textures/Checker.png"           
+        },
+        shaderComponent = {
+            vertex = "Shaders/vertex.vs",
+            frag = "Shaders/frag.fs"
         }
     }
 }

@@ -10,15 +10,16 @@ sumNumbers = function(a, b)
     return a + b
 end
 
-entityItem = {
+customEntity = {
     information = {
-        name = "Entity Name"
+        name = "Other Custom Entity"
     },
     components = {
-        GraphicsComponent = {
-            filename = "image.png",
-            z = 0,
-            animated = false            
+        componentList = {
+            "graphicsComponent"
+        },
+        graphicsComponent = {
+            filename = "image.png"           
         }
     }
 }

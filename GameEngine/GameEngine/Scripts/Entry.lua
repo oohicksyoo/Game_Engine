@@ -10,7 +10,11 @@ local applicationSettings = {
         {
             name = "entityItem",
             path = "Scripts/Entities/EntityItem.lua"
-        }    
+        },
+        {
+            name = "customEntity",
+            path = "Scripts/script.lua"
+        }     
     }
 }
 

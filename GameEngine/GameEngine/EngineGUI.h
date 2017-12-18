@@ -3,6 +3,8 @@
 #include "Debug.h"
 #include "RenderEngine.h"
 #include "GameView.h"
+#include "Entity.h"
+#include "EntityManager.h"
 
 //Dear Im GUI
 #include "imgui.h"
@@ -19,6 +21,8 @@ using namespace Utility;
 using namespace ImGui;
 using namespace sf;
 using namespace Engine;
+using namespace Entities;
+using namespace Managers;
 
 namespace Engine {
 	class EngineGUI : public Singleton<EngineGUI>

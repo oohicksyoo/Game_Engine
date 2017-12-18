@@ -23,3 +23,8 @@ bool Managers::EntityManager::RemoveEntityAt(int i)
 {
 	return false;
 }
+
+vector<Entity*> Managers::EntityManager::GetEntities()
+{
+	return entities;
+}

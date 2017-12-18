@@ -15,6 +15,7 @@ namespace Managers {
 		public:
 			void AddEntity(Entity* &entity);
 			bool RemoveEntityAt(int i);
+			vector<Entity*> GetEntities();
 
 		private:
 			EntityManager();

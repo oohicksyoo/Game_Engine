@@ -3,6 +3,8 @@
 #include "Debug.h"
 #include "Entity.h"
 #include "EntityManager.h"
+#include "Component.h"
+#include "ComponentFactory.h"
 
 //Lua Stuff
 #include <LuaBridge.h>
@@ -19,6 +21,7 @@ using namespace std;
 using namespace Utility;
 using namespace Entities;
 using namespace Managers;
+using namespace Factories;
 
 namespace Managers {
 	class LuaManager : public Singleton<LuaManager>
@@ -28,6 +31,8 @@ namespace Managers {
 			LuaManager();
 			void init();
 			void registerFunctionCallbacks();
+			void entityLoading(LuaRef entitiesToLoad);
+			Entity* creatEntity(LuaRef e);
 
 			//Lua Based Callbacks
 		private:
@@ -36,6 +41,7 @@ namespace Managers {
 
 		private:
 			lua_State* L;
+			int entityIndex = 0;
 	};
 }
 

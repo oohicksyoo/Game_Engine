@@ -7,7 +7,7 @@ Engine::EngineGUI::EngineGUI()
 
 void Engine::EngineGUI::Initialize(RenderWindow& window) {
 	SFML::Init(window);
-	StyleColorsDark(); //TODO: Reload last saved theme
+	StyleColorsDark();
 	GetStyle().FrameBorderSize = 1.0f;
 }
 
@@ -153,14 +153,66 @@ void Engine::EngineGUI::MenuBar()
 }
 
 void Engine::EngineGUI::EntityMenu() {
+	//Needed Properties
+	vector<Entity*> entities = EntityManager::getInstance().GetEntities();
+	vector<Entity*> hEntities = GameView::getInstance().GetHierarchy();
+
+	//Window Properties
 	ImVec2 windowPosition = ImVec2(0, 20); //Top left
 	ImVec2 windowPivot = ImVec2(0, 0);
 	SetNextWindowPos(windowPosition, ImGuiCond_Always, windowPivot);
 	SetNextWindowSize(ImVec2(200, GetIO().DisplaySize.y - 20));
-	//PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
-	Begin("Entity Menu", (bool*)0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
+
+	//Window Design
+	Begin("Properties", (bool*)0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
+	
+	if (CollapsingHeader("Entities")) {
+		for (int i = 0; i < entities.size(); i++) {
+			Text(entities[i]->GetName().c_str());
+			if (IsItemHovered()) {
+				BeginTooltip();
+				Text("Components");
+				Separator();
+
+				//Entity Components
+				vector<Component*> coms = entities[i]->GetComponents();
+				for (int x = 0; x < coms.size(); x++) {
+					string componentName = coms[x]->GetComponentName();
+					BulletText(componentName.c_str());
+				}
+
+				EndTooltip();
+			}
+
+			if (IsItemClicked()) {
+				Debug::getInstance().Log("Just clicked entity (" + entities[i]->GetName() + ")");
+				//TODO: Create copy of Entity and send it to the game view
+				GameView::getInstance().AddEntityToScene(entities[i]);
+			}
+		}
+	}	
+
+	if (CollapsingHeader("Scene Hierarchy")) {
+		for (int i = 0; i < hEntities.size(); i++) {
+			Text(hEntities[i]->GetName().c_str());
+			if (IsItemHovered()) {
+				BeginTooltip();
+				Text("Components");
+				Separator();
+
+				//Entity Components
+				vector<Component*> coms = hEntities[i]->GetComponents();
+				for (int x = 0; x < coms.size(); x++) {
+					string componentName = coms[x]->GetComponentName();
+					BulletText(componentName.c_str());
+				}
+
+				EndTooltip();
+			}
+		}
+	}
+
 	End();
-	//PopStyleColor();
 }
 
 void Engine::EngineGUI::LoggingWindow() {
@@ -173,7 +225,6 @@ void Engine::EngineGUI::SceneWindow(Sprite sceneView) {
 	SetNextWindowPos(windowPosition, ImGuiCond_Always, windowPivot);
 	SetNextWindowSize(ImVec2(765, 465));// 15 border on right and bottom
 	Begin("Scene View", (bool*)0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
-	Text("Scene Name");
 	ImGui::Image(sceneView);
 	End();
 }
