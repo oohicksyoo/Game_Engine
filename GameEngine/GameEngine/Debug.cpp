@@ -24,4 +24,9 @@ void Utility::Debug::DrawConsoleWindow() {
 	log.Draw("Console");
 }
 
+void Utility::Debug::ClearLogWindow()
+{
+	log.Clear();
+}
+
 

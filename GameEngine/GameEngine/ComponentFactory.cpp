@@ -7,12 +7,16 @@ Factories::ComponentFactory::ComponentFactory()
 
 }
 
-Component * Factories::ComponentFactory::CreateComponent(string componentName)
+Component * Factories::ComponentFactory::CreateComponent(lua_State* L, string componentName)
 {
-	if (componentName == "graphicsComponent") {
-		return new GraphicsComponent;
-	} else if (componentName == "shaderComponent") {
-		return new ShaderComponent;
+	for (int i = 0; i < componentName.length(); i++) {
+		componentName[i] = tolower(componentName[i]);
+	}
+
+	if (componentName == "graphicscomponent") {
+		return new GraphicsComponent(L);
+	} else if (componentName == "shadercomponent") {
+		return new ShaderComponent(L);
 	}
 
 	return nullptr;
@@ -20,9 +24,14 @@ Component * Factories::ComponentFactory::CreateComponent(string componentName)
 
 type_index Factories::ComponentFactory::GetType(string componentName)
 {
-	if (componentName == "graphicsComponent") {
+	for (int i = 0; i < componentName.length(); i++) {
+		componentName[i] = tolower(componentName[i]);
+	}
+
+
+	if (componentName == "graphicscomponent") {
 		return type_index(typeid(GraphicsComponent));
-	} else if (componentName == "shaderComponent") {
+	} else if (componentName == "shadercomponent") {
 		return type_index(typeid(ShaderComponent));
 	}
 	

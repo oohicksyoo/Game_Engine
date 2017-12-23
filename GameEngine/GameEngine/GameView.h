@@ -7,6 +7,7 @@
 #include "Component.h"
 #include "GraphicsComponent.h"
 #include "ShaderComponent.h"
+#include "TransformComponent.h"
 
 #include <vector>
 
@@ -34,6 +35,8 @@ namespace Engine {
 			Texture GetSceneView();
 			void AddEntityToScene(Entity* entity);
 			vector<Entity*> GetHierarchy();
+			void SetIsPlaying(bool value);
+			bool GetIsPlaying();
 
 		private:
 			GameView();
@@ -43,10 +46,6 @@ namespace Engine {
 			bool isPlaying;
 			bool isFullscreen;
 			vector<Entity*> hierarchy;
-
-
-			Texture texture;
-			Sprite sprite;
 			View camera;
 			RenderTexture renderTexture;
 			Texture sceneView;

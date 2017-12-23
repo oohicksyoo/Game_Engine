@@ -19,7 +19,7 @@ customEntity = {
             "graphicsComponent"
         },
         graphicsComponent = {
-            filename = "image.png"           
+            filename = "Textures/RTS_Crate.png"           
         }
     }
 }

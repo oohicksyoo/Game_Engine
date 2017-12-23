@@ -5,11 +5,6 @@ Engine::GameView::GameView() {
 	isPlaying = false;
 	isFullscreen = false;
 
-	//Pre setting some things to test scene mode
-	if (texture.loadFromFile("Textures/Checker.png")) {
-		Debug::getInstance().Log("Loaded Checker Texture");
-	}
-	sprite.setTexture(texture, true);
 
 	camera.reset(FloatRect(0, 0, 750, 400));
 
@@ -19,12 +14,12 @@ Engine::GameView::GameView() {
 
 Engine::GameView::~GameView()
 {
-	//TODO: Use after copy of entity to new pointer is done
-	/*(for (auto it = hierarchy.begin(); it != hierarchy.end(); it++) {
+	//Use after copy of entity to new pointer is done
+	for (auto it = hierarchy.begin(); it != hierarchy.end(); it++) {
 
 		delete (*it);
 	}
-	hierarchy.clear();*/
+	hierarchy.clear();
 }
 
 void Engine::GameView::ProcessEvents(Event e) {
@@ -51,10 +46,28 @@ Texture Engine::GameView::GetSceneView() {
 	//renderTexture.draw(sprite);
 	for (int i = 0; i < hierarchy.size(); i++) {
 		Entity* e = hierarchy[i];
-		//GraphicsComponent* c = e->GetGraphics();
+
+		if (isPlaying) {
+			e->CallUpdate();
+		}		
+
+		//Graphics Component
 		auto gc = e->GetComponent<GraphicsComponent>();
-		Sprite s = gc->GetSprite();
-		renderTexture.draw(s);
+		if (gc != nullptr) {
+			Sprite s = gc->GetSprite();
+
+			//Transform Component
+			auto t = e->GetComponent<TransformComponent>();
+			if (t != nullptr) {
+				s.setPosition(t->GetPosition());
+				s.setRotation(t->GetRotation());
+				//s.setScale(t->GetScale());
+			}
+			
+
+			renderTexture.draw(s);
+		}
+		
 	}
 
 	//Displaying
@@ -70,5 +83,22 @@ void Engine::GameView::AddEntityToScene(Entity * entity)
 vector<Entity*> Engine::GameView::GetHierarchy()
 {
 	return hierarchy;
+}
+
+void Engine::GameView::SetIsPlaying(bool value)
+{
+	isPlaying = value;
+
+	if (isPlaying) {
+		//TODO: Save kinda like meta data of where everything was?
+		Debug::getInstance().ClearLogWindow();
+	} else {
+		//TODO: Clear everything back to starting position
+	}
+}
+
+bool Engine::GameView::GetIsPlaying()
+{
+	return isPlaying;
 }
 

@@ -27,17 +27,22 @@ namespace Managers {
 	class LuaManager : public Singleton<LuaManager>
 	{
 		friend class Singleton<LuaManager>;
+
+		public:
+			int getNewID();
+
 		private:
 			LuaManager();
 			void init();
 			void registerFunctionCallbacks();
 			void entityLoading(LuaRef entitiesToLoad);
-			Entity* creatEntity(LuaRef e);
+			Entity* creatEntity(LuaRef e);			
 
 			//Lua Based Callbacks
 		private:
 			static void log(string String);
 			static void spacer();
+			static void move(float x, float y);
 
 		private:
 			lua_State* L;

@@ -33,7 +33,11 @@ void Managers::LuaManager::registerFunctionCallbacks()
 		.beginNamespace("Debug")
 		.addFunction("Log", log)
 		.addFunction("Spacer", spacer)
-		.endNamespace();	
+		.endNamespace()
+		.beginClass<Entity>("Entity")
+		.addFunction("Move", &Entity::Move)
+		.endClass();
+		
 }
 
 void Managers::LuaManager::entityLoading(LuaRef entitiesToLoad)
@@ -70,8 +74,8 @@ Entity* Managers::LuaManager::creatEntity(LuaRef e)
 		Debug::getInstance().Log("Found name! (" + name.cast<string>() + ")");
 	}
 
-	Entity* newEntity = new Entity(entityIndex, name.cast<string>());
-
+	Entity* newEntity = new Entity(L);//new Entity(entityIndex, name.cast<string>());
+	newEntity->Initialize(getNewID(), name.cast<string>());
 
 	//Add Components here
 	LuaRef components = e["components"];
@@ -84,7 +88,7 @@ Entity* Managers::LuaManager::creatEntity(LuaRef e)
 			if (componentDetails.isNil()) {
 				Debug::getInstance().Log("ERROR: Missing Component details for (" + componentList[i + 1].cast<string>() + ")");
 			} else {
-				Component* c = ComponentFactory::getInstance().CreateComponent(componentName);
+				Component* c = ComponentFactory::getInstance().CreateComponent(L, componentName);
 				type_index type = ComponentFactory::getInstance().GetType(componentName);
 
 				c->SetInformation(componentDetails);
@@ -97,9 +101,21 @@ Entity* Managers::LuaManager::creatEntity(LuaRef e)
 		Debug::getInstance().Log("ERROR: Unable to find component list, please check that there is a (componentList) in the components section");
 	}
 
+	LuaRef customScripts = e["customScripts"];
+	if (!customScripts.isNil()) {
+		LuaRef updateFunction = customScripts["update"];
+		if (!updateFunction.isNil()) {
+			newEntity->SetUpdate(updateFunction);
+		}
+	}
 
-	entityIndex++;
 	return newEntity;
+}
+
+int Managers::LuaManager::getNewID()
+{
+	entityIndex++;
+	return entityIndex;
 }
 
 //Lua Callbacks
@@ -111,6 +127,11 @@ void Managers::LuaManager::log(string String)
 void Managers::LuaManager::spacer()
 {
 	Debug::getInstance().Spacer();
+}
+
+void Managers::LuaManager::move(float x = 0, float y = 0)
+{
+
 }
 
 

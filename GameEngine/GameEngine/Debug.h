@@ -96,6 +96,7 @@ namespace Utility {
 			void Log(string String);
 			void Spacer();
 			void DrawConsoleWindow();
+			void ClearLogWindow();
 
 		private:
 			ConsoleLog log;
